@@ -214,31 +214,11 @@ p {
 .header__logo {
   display: flex;
   align-items: center;
-  gap: var(--space-sm);
-  color: var(--color-primary);
 }
 
-.header__logo-icon {
-  color: var(--color-accent);
-  flex-shrink: 0;
-}
-
-.header__logo-text {
-  font-family: var(--font-display);
-  font-size: var(--text-xl);
-  font-weight: 700;
-  letter-spacing: 0.02em;
-}
-
-.header__logo-text span {
-  color: var(--color-accent);
-  font-weight: 400;
-  font-size: var(--text-sm);
-  display: block;
-  line-height: 1;
-  margin-top: -2px;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
+.header__logo-img {
+  height: 48px;
+  width: auto;
 }
 
 .header__nav {

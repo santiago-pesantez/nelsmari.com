@@ -12,11 +12,16 @@
   <!-- Header -->
   <header class="header">
     <div class="header__inner">
-      <a href="/" class="header__logo">Nelsmari <span>Sous Vide</span></a>
+      <a href="/" class="header__logo">
+        <svg class="header__logo-icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 2l0 7c0 1.1.9 2 2 2h4c1.1 0 2-.9 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/>
+        </svg>
+        <span class="header__logo-text">Nelsmari <span>Sous Vide</span></span>
+      </a>
       <nav class="header__nav">
         <a href="/sous-vide/">Menú</a>
         <a href="/sous-vide/como-calentar.html">Cómo calentar</a>
-        <a href="/sous-vide/zonas.html">Zonas de entrega</a>
+        <a href="/sous-vide/zonas.html">Zonas</a>
         <a href="/sous-vide/nosotros.html">Nosotros</a>
       </nav>
       <button class="header__menu-btn" aria-label="Abrir menú" onclick="document.querySelector('.nav-mobile').classList.add('is-open')">
@@ -26,71 +31,205 @@
   </header>
 
   <!-- Mobile Nav -->
-  <div class="nav-mobile">
-    <button class="nav-mobile__close" aria-label="Cerrar menú" onclick="this.closest('.nav-mobile').classList.remove('is-open')">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  <div class="nav-mobile" id="nav-mobile">
+    <button class="nav-mobile__close" aria-label="Cerrar menú" onclick="document.getElementById('nav-mobile').classList.remove('is-open')">
+      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
     </button>
-    <a href="/" onclick="this.closest('.nav-mobile').classList.remove('is-open')">Inicio</a>
-    <a href="/sous-vide/">Menú</a>
+    <a href="/" onclick="document.getElementById('nav-mobile').classList.remove('is-open')">Inicio</a>
+    <a href="/sous-vide/" onclick="document.getElementById('nav-mobile').classList.remove('is-open')">Menú</a>
     <a href="/sous-vide/como-calentar.html">Cómo calentar</a>
     <a href="/sous-vide/zonas.html">Zonas de entrega</a>
     <a href="/sous-vide/nosotros.html">Nosotros</a>
   </div>
 
   <!-- Hero -->
-  <section class="section section--warm" style="padding: var(--space-4xl) 0;">
-    <div class="container text-center">
-      <h1>Solo calienta y disfruta</h1>
-      <p style="font-size: var(--text-lg); max-width: 500px; margin: 0 auto var(--space-xl);">Comida gourmet lista en minutos.</p>
-      <div style="display: flex; flex-wrap: wrap; gap: var(--space-md); justify-content: center;">
+  <section class="hero">
+    <div class="hero__overlay"></div>
+    <div class="hero__content container">
+      <p class="hero__tagline">No usamos conservantes, usamos técnica.</p>
+      <h1 class="hero__title">Solo calienta<br>y disfruta</h1>
+      <p class="hero__subtitle">Comida gourmet lista en minutos.<br>Preparada al vacío con ingredientes frescos.</p>
+      <div class="hero__actions">
         <a href="/sous-vide/" class="btn btn--primary btn--lg">Ver Menú</a>
-        <a href="https://wa.me/593995052703" target="_blank" rel="noopener" class="btn btn--whatsapp btn--lg">Pedir por WhatsApp</a>
+        <a href="https://wa.me/593995052703" target="_blank" rel="noopener" class="btn btn--whatsapp btn--lg">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Pedir por WhatsApp
+        </a>
       </div>
     </div>
   </section>
 
   <!-- Beneficios -->
-  <section class="section">
-    <div class="container text-center">
-      <h2>Comida real, sin complicaciones</h2>
+  <section class="section benefits">
+    <div class="container">
+      <h2 class="text-center">Comida real, sin complicaciones</h2>
       <div class="divider"></div>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: var(--space-xl); margin-top: var(--space-2xl);">
-        <div>
-          <div style="font-size: 2rem; margin-bottom: var(--space-sm);">&#9878;</div>
-          <strong>Al vacío</strong>
-          <p style="font-size: var(--text-sm); color: var(--color-text-light);">Sellado para preservar sabor</p>
+      <div class="benefits__grid">
+        <div class="benefit">
+          <div class="benefit__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2a7 7 0 0 1 7 7c0 3-2 5.5-3 7a13 13 0 0 0-1.5 4h-5A13 13 0 0 0 8 16c-1-1.5-3-4-3-7a7 7 0 0 1 7-7z"/>
+              <path d="M9.5 20h5"/><path d="M10 23h4"/>
+            </svg>
+          </div>
+          <strong class="benefit__title">Al vacío</strong>
+          <p class="benefit__text">Cocinado a baja temperatura para mayor sabor y calor.</p>
         </div>
-        <div>
-          <div style="font-size: 2rem; margin-bottom: var(--space-sm);">&#9832;</div>
-          <strong>Fácil de calentar</strong>
-          <p style="font-size: var(--text-sm); color: var(--color-text-light);">Agua caliente o microondas</p>
+        <div class="benefit">
+          <div class="benefit__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 12c-2-2.67-4-4-4-5.5a4 4 0 1 1 8 0c0 1.5-2 2.83-4 5.5z"/>
+              <path d="M3.5 14h17"/><rect x="2" y="14" width="20" height="8" rx="2"/>
+            </svg>
+          </div>
+          <strong class="benefit__title">Fácil de calentar</strong>
+          <p class="benefit__text">Solo agua caliente o microondas. Listo en minutos.</p>
         </div>
-        <div>
-          <div style="font-size: 2rem; margin-bottom: var(--space-sm);">&#9201;</div>
-          <strong>Siempre listo</strong>
-          <p style="font-size: var(--text-sm); color: var(--color-text-light);">En minutos a tu mesa</p>
+        <div class="benefit">
+          <div class="benefit__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+            </svg>
+          </div>
+          <strong class="benefit__title">Siempre listo</strong>
+          <p class="benefit__text">Comida lista en tu refrigerador cuando la necesites.</p>
         </div>
-        <div>
-          <div style="font-size: 2rem; margin-bottom: var(--space-sm);">&#9997;</div>
-          <strong>Artesanal</strong>
-          <p style="font-size: var(--text-sm); color: var(--color-text-light);">Hecho a mano con cariño</p>
+        <div class="benefit">
+          <div class="benefit__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22c-4.97 0-9-2.24-9-5v-4c0-2.76 4.03-5 9-5s9 2.24 9 5v4c0 2.76-4.03 5-9 5z"/>
+              <path d="M12 8V2"/><path d="M4.93 5.93l2.83 2.83"/><path d="M19.07 5.93l-2.83 2.83"/>
+            </svg>
+          </div>
+          <strong class="benefit__title">Artesanal</strong>
+          <p class="benefit__text">Cada plato hecho a mano con ingredientes frescos.</p>
         </div>
-        <div>
-          <div style="font-size: 2rem; margin-bottom: var(--space-sm);">&#9752;</div>
-          <strong>Sin conservantes</strong>
-          <p style="font-size: var(--text-sm); color: var(--color-text-light);">Solo ingredientes frescos</p>
+        <div class="benefit">
+          <div class="benefit__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M7 20h10"/><path d="M10 20c5.5-2.5.8-6.4 3-10"/>
+              <path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/>
+              <path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/>
+            </svg>
+          </div>
+          <strong class="benefit__title">Sin conservantes</strong>
+          <p class="benefit__text">No usamos conservantes, usamos técnica.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Preview del menú — se llenará dinámicamente en Fase 2 -->
-  <section class="section section--warm">
+  <!-- Cómo funciona -->
+  <section class="section section--warm how-it-works">
+    <div class="container text-center">
+      <h2>¿Cómo funciona?</h2>
+      <div class="divider"></div>
+      <div class="steps">
+        <div class="step">
+          <div class="step__number">1</div>
+          <h3 class="step__title">Elige tus platos</h3>
+          <p class="step__text">Arma tu combo con proteínas, carbohidratos y vegetales desde nuestro menú.</p>
+        </div>
+        <div class="step__arrow">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </div>
+        <div class="step">
+          <div class="step__number">2</div>
+          <h3 class="step__title">Pide por WhatsApp</h3>
+          <p class="step__text">Envía tu pedido directo a nuestro WhatsApp con un solo clic.</p>
+        </div>
+        <div class="step__arrow">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </div>
+        <div class="step">
+          <div class="step__number">3</div>
+          <h3 class="step__title">Calienta y disfruta</h3>
+          <p class="step__text">Recibe en tu puerta, calienta en minutos y listo. Comida gourmet en casa.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Platos destacados -->
+  <section class="section featured">
     <div class="container text-center">
       <h2>Nuestros platos destacados</h2>
       <div class="divider"></div>
-      <div id="featured-products" class="product-grid" style="margin-top: var(--space-2xl);"></div>
-      <a href="/sous-vide/" class="btn btn--primary" style="margin-top: var(--space-2xl);">Ver menú completo</a>
+      <p class="featured__intro">Preparados con la técnica sous vide para un sabor y textura inigualables.</p>
+      <div id="featured-products" class="product-grid"></div>
+      <a href="/sous-vide/" class="btn btn--primary btn--lg featured__cta">Ver menú completo</a>
+    </div>
+  </section>
+
+  <!-- Precios / Categorías -->
+  <section class="section section--warm categories">
+    <div class="container text-center">
+      <h2>Arma tu combo perfecto</h2>
+      <div class="divider"></div>
+      <div class="categories__grid">
+        <div class="category-card">
+          <div class="category-card__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M15.5 2.5c-2 0-4 1-5.5 3-1.5-2-3.5-3-5.5-3C2 2.5 0 5 0 7.5c0 5 7 10.5 12 14 5-3.5 12-9 12-14 0-2.5-2-5-4.5-5z"/>
+            </svg>
+          </div>
+          <h3 class="category-card__title">Proteínas</h3>
+          <p class="category-card__price">$3,25</p>
+          <p class="category-card__desc">9 opciones: res, pollo, cerdo, pavo, pescado y camarones.</p>
+        </div>
+        <div class="category-card category-card--accent">
+          <div class="category-card__badge">Combo desde $5</div>
+          <div class="category-card__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 2l0 7c0 1.1.9 2 2 2h4c1.1 0 2-.9 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/>
+            </svg>
+          </div>
+          <h3 class="category-card__title">Combo Balanceado</h3>
+          <p class="category-card__price">$5,00</p>
+          <p class="category-card__desc">1 proteína + 1 carbohidrato + 1 vegetal.</p>
+        </div>
+        <div class="category-card">
+          <div class="category-card__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>
+            </svg>
+          </div>
+          <h3 class="category-card__title">Carbohidratos</h3>
+          <p class="category-card__price">$1,25</p>
+          <p class="category-card__desc">5 opciones: arroz chaufa, puré, majado, curry, pasta.</p>
+        </div>
+        <div class="category-card">
+          <div class="category-card__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M7 20h10"/><path d="M10 20c5.5-2.5.8-6.4 3-10"/>
+              <path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/>
+              <path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/>
+            </svg>
+          </div>
+          <h3 class="category-card__title">Vegetales</h3>
+          <p class="category-card__price">$1,00</p>
+          <p class="category-card__desc">5 opciones: escabeche, peperonata, salteados y más.</p>
+        </div>
+      </div>
+      <a href="/sous-vide/" class="btn btn--secondary btn--lg" style="margin-top: var(--space-2xl);">Explorar el menú</a>
+    </div>
+  </section>
+
+  <!-- CTA Final -->
+  <section class="section cta-final">
+    <div class="container text-center">
+      <h2>¿Listo para probar?</h2>
+      <div class="divider"></div>
+      <p style="max-width: 500px; margin: 0 auto var(--space-xl); font-size: var(--text-lg);">
+        Haz tu pedido ahora y recibe comida gourmet en la puerta de tu casa en el Valle de los Chillos.
+      </p>
+      <div class="hero__actions">
+        <a href="/sous-vide/" class="btn btn--primary btn--lg">Ver Menú</a>
+        <a href="https://wa.me/593995052703" target="_blank" rel="noopener" class="btn btn--whatsapp btn--lg">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Pedir ahora
+        </a>
+      </div>
     </div>
   </section>
 
@@ -100,19 +239,40 @@
       <div class="footer__grid">
         <div>
           <h4 class="footer__title">Nelsmari Sous Vide</h4>
-          <p>Comida gourmet preparada al vacío, lista para calentar y servir.</p>
+          <p>Comida gourmet preparada al vacío, lista para calentar y servir. Sin conservantes, usamos técnica.</p>
         </div>
         <div>
           <h4 class="footer__title">Navegación</h4>
-          <p><a href="/sous-vide/">Menú</a></p>
-          <p><a href="/sous-vide/como-calentar.html">Cómo calentar</a></p>
-          <p><a href="/sous-vide/seguridad.html">Seguridad</a></p>
-          <p><a href="/sous-vide/zonas.html">Zonas de entrega</a></p>
+          <ul class="footer__links">
+            <li><a href="/sous-vide/">Menú</a></li>
+            <li><a href="/sous-vide/como-calentar.html">Cómo calentar</a></li>
+            <li><a href="/sous-vide/seguridad.html">Seguridad y empaque</a></li>
+            <li><a href="/sous-vide/zonas.html">Zonas de entrega</a></li>
+            <li><a href="/sous-vide/nosotros.html">Sobre nosotros</a></li>
+          </ul>
         </div>
         <div>
           <h4 class="footer__title">Contacto</h4>
-          <p><a href="https://wa.me/593995052703" target="_blank" rel="noopener">+593 995 052 703</a></p>
-          <p>Valle de los Chillos, Ecuador</p>
+          <ul class="footer__links">
+            <li>
+              <a href="https://wa.me/593995052703" target="_blank" rel="noopener">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: middle; margin-right: 6px;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                +593 995 052 703
+              </a>
+            </li>
+            <li>Valle de los Chillos, Ecuador</li>
+          </ul>
+          <div class="footer__social">
+            <a href="#" aria-label="Instagram" title="Instagram">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="#" aria-label="Facebook" title="Facebook">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="#" aria-label="TikTok" title="TikTok">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
+            </a>
+          </div>
         </div>
       </div>
       <div class="footer__bottom">
@@ -126,5 +286,9 @@
     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
   </a>
 
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+  <script src="/assets/js/cart.js"></script>
+  <script src="/assets/js/home.js"></script>
 </body>
 </html>

@@ -1,11 +1,12 @@
 /**
  * Nelsmari Sous Vide — Menu Module
- * Carga products.csv con PapaParse y renderiza el catálogo
+ * Carga products.csv con PapaParse y renderiza el catálogo con qty selectors
  */
 
-(() => {
+const Menu = (() => {
   const grid = document.getElementById('product-grid');
   const filtersContainer = document.getElementById('category-filters');
+  const countEl = document.getElementById('menu-count');
   let allProducts = [];
   let activeCategory = 'todas';
 
@@ -21,6 +22,15 @@
     }
   });
 
+  function getCategoryLabel(cat) {
+    const labels = {
+      proteinas: 'Proteínas',
+      carbohidratos: 'Carbohidratos',
+      vegetales: 'Vegetales'
+    };
+    return labels[cat] || cat;
+  }
+
   function renderProducts() {
     if (!grid) return;
 
@@ -28,25 +38,68 @@
       ? allProducts
       : allProducts.filter(p => p.categoria === activeCategory);
 
-    grid.innerHTML = filtered.map(product => `
-      <div class="card" data-id="${product.id}">
-        <div class="card__image">
+    // Update count
+    if (countEl) {
+      countEl.textContent = `${filtered.length} plato${filtered.length !== 1 ? 's' : ''} disponible${filtered.length !== 1 ? 's' : ''}`;
+    }
+
+    // Group by category if showing all
+    if (activeCategory === 'todas') {
+      const groups = {};
+      filtered.forEach(p => {
+        if (!groups[p.categoria]) groups[p.categoria] = [];
+        groups[p.categoria].push(p);
+      });
+
+      const order = ['proteinas', 'carbohidratos', 'vegetales'];
+      grid.innerHTML = order
+        .filter(cat => groups[cat])
+        .map(cat => `
+          <div class="menu-category-header" style="grid-column: 1 / -1;">
+            <h2 class="menu-category-title">${getCategoryLabel(cat)}</h2>
+          </div>
+          ${groups[cat].map(p => renderCard(p)).join('')}
+        `).join('');
+    } else {
+      grid.innerHTML = filtered.map(p => renderCard(p)).join('');
+    }
+  }
+
+  function renderCard(product) {
+    const qty = Cart.getItemQty(product.id);
+    const price = parseFloat(product.precio);
+
+    return `
+      <div class="card card--menu" data-id="${product.id}">
+        <a href="/sous-vide/producto/?id=${product.id}" class="card__image">
           <img src="/assets/img/products/${product.imagen_miniatura}"
                alt="${product.nombre}"
-               onerror="this.style.display='none'">
-        </div>
+               loading="lazy"
+               onerror="this.parentElement.classList.add('card__image--placeholder')">
+        </a>
         <div class="card__body">
-          <h3 class="card__title">${product.nombre}</h3>
+          <a href="/sous-vide/producto/?id=${product.id}" class="card__title-link">
+            <h3 class="card__title">${product.nombre}</h3>
+          </a>
           <p class="card__description">${product.descripcion_corta}</p>
-          <div class="card__actions">
-            <span class="card__price">${Cart.formatPrice(parseFloat(product.precio))}</span>
-            <button class="btn btn--primary btn--sm" onclick="addToCart('${product.id}')">
-              Agregar
-            </button>
+          <div class="card__footer">
+            <span class="card__price">${Cart.formatPrice(price)}</span>
+            ${qty > 0 ? `
+              <div class="qty-selector">
+                <button class="qty-selector__btn" onclick="Menu.changeQty('${product.id}', -1)" aria-label="Menos">−</button>
+                <span class="qty-selector__value">${qty}</span>
+                <button class="qty-selector__btn" onclick="Menu.changeQty('${product.id}', 1)" aria-label="Más">+</button>
+              </div>
+            ` : `
+              <button class="btn btn--primary btn--sm" onclick="Menu.addProduct('${product.id}')">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                Agregar
+              </button>
+            `}
           </div>
         </div>
       </div>
-    `).join('');
+    `;
   }
 
   function setupFilters() {
@@ -63,28 +116,34 @@
       );
 
       renderProducts();
+
+      // Scroll to grid
+      grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   }
 
-  // Global function for onclick
-  window.addToCart = function(productId) {
+  function addProduct(productId) {
     const product = allProducts.find(p => p.id === productId);
     if (product) {
       Cart.addItem(product);
-
-      // Brief visual feedback
-      const btn = document.querySelector(`[data-id="${productId}"] .btn`);
-      if (btn) {
-        const original = btn.textContent;
-        btn.textContent = 'Agregado';
-        btn.classList.remove('btn--primary');
-        btn.classList.add('btn--accent');
-        setTimeout(() => {
-          btn.textContent = original;
-          btn.classList.remove('btn--accent');
-          btn.classList.add('btn--primary');
-        }, 800);
-      }
+      refreshCards();
     }
-  };
+  }
+
+  function changeQty(productId, delta) {
+    const currentQty = Cart.getItemQty(productId);
+    const newQty = currentQty + delta;
+    if (newQty <= 0) {
+      Cart.removeItem(productId);
+    } else {
+      Cart.updateQty(productId, newQty);
+    }
+    refreshCards();
+  }
+
+  function refreshCards() {
+    renderProducts();
+  }
+
+  return { addProduct, changeQty, refreshCards };
 })();

@@ -4,27 +4,149 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Zonas de Entrega — Nelsmari Sous Vide</title>
+  <meta name="description" content="Entregamos en el Valle de los Chillos, Ecuador. Consulta nuestras zonas de cobertura.">
   <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 </head>
 <body>
-  <!-- Placeholder — Fase 5 -->
+
+  <!-- Header -->
   <header class="header">
     <div class="header__inner">
-      <a href="/" class="header__logo">Nelsmari <span>Sous Vide</span></a>
+      <a href="/" class="header__logo">
+        <svg class="header__logo-icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 2l0 7c0 1.1.9 2 2 2h4c1.1 0 2-.9 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/>
+        </svg>
+        <span class="header__logo-text">Nelsmari <span>Sous Vide</span></span>
+      </a>
       <nav class="header__nav">
         <a href="/sous-vide/">Menú</a>
         <a href="/sous-vide/como-calentar.html">Cómo calentar</a>
-        <a href="/sous-vide/zonas.html">Zonas de entrega</a>
+        <a href="/sous-vide/zonas.html" class="is-active">Zonas</a>
         <a href="/sous-vide/nosotros.html">Nosotros</a>
       </nav>
+      <button class="header__menu-btn" aria-label="Abrir menú" onclick="document.getElementById('nav-mobile').classList.add('is-open')">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
     </div>
   </header>
-  <section class="section">
-    <div class="container container--narrow text-center">
+
+  <!-- Mobile Nav -->
+  <div class="nav-mobile" id="nav-mobile">
+    <button class="nav-mobile__close" aria-label="Cerrar menú" onclick="document.getElementById('nav-mobile').classList.remove('is-open')">
+      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <a href="/">Inicio</a>
+    <a href="/sous-vide/">Menú</a>
+    <a href="/sous-vide/como-calentar.html">Cómo calentar</a>
+    <a href="/sous-vide/zonas.html">Zonas de entrega</a>
+    <a href="/sous-vide/nosotros.html">Nosotros</a>
+  </div>
+
+  <!-- Page Header -->
+  <section class="section section--warm page-hero">
+    <div class="container text-center">
       <h1>Zonas de Entrega</h1>
+      <p class="page-hero__subtitle">Actualmente entregamos en el Valle de los Chillos y sectores cercanos.</p>
       <div class="divider"></div>
-      <p>Mapa interactivo del Valle de los Chillos — próximamente.</p>
     </div>
   </section>
+
+  <!-- Map -->
+  <section class="section">
+    <div class="container">
+      <div id="delivery-map" class="delivery-map"></div>
+      <div class="zone-info">
+        <div class="zone-info__card">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div>
+            <h3>Zona de cobertura</h3>
+            <p>Valle de los Chillos: San Rafael, Sangolquí, Conocoto, Armenia, El Tingo, Guangopolo y sectores aledaños.</p>
+          </div>
+        </div>
+        <div class="zone-info__card">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <div>
+            <h3>Horarios de entrega</h3>
+            <p>Coordinaremos el día y hora directamente contigo por WhatsApp al momento de confirmar tu pedido.</p>
+          </div>
+        </div>
+        <div class="zone-info__card">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <div>
+            <h3>¿Tu zona no aparece?</h3>
+            <p>Escríbenos y lo coordinamos. Estamos ampliando nuestra cobertura constantemente.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section--warm text-center">
+    <div class="container">
+      <h2>¿Listo para pedir?</h2>
+      <div class="divider"></div>
+      <p style="max-width: 400px; margin: 0 auto var(--space-xl);">Haz tu pedido y recíbelo en la puerta de tu casa.</p>
+      <div style="display: flex; flex-wrap: wrap; gap: var(--space-md); justify-content: center;">
+        <a href="/sous-vide/" class="btn btn--primary btn--lg">Ver Menú</a>
+        <a href="https://wa.me/593995052703?text=Hola%20Nelsmari%2C%20quiero%20saber%20si%20entregan%20en%20mi%20zona." target="_blank" rel="noopener" class="btn btn--whatsapp btn--lg">Consultar mi zona</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__bottom">
+        <p>&copy; 2026 Nelsmari Sous Vide. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Float -->
+  <a href="https://wa.me/593995052703" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Pedir por WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    // Valle de los Chillos center coordinates
+    const map = L.map('delivery-map').setView([-0.31, -78.45], 13);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+      maxZoom: 18
+    }).addTo(map);
+
+    // Delivery zone polygon (approximate Valle de los Chillos area)
+    const deliveryZone = L.polygon([
+      [-0.275, -78.495],
+      [-0.265, -78.465],
+      [-0.270, -78.430],
+      [-0.285, -78.410],
+      [-0.305, -78.400],
+      [-0.330, -78.405],
+      [-0.350, -78.420],
+      [-0.355, -78.445],
+      [-0.345, -78.475],
+      [-0.330, -78.495],
+      [-0.310, -78.505],
+      [-0.290, -78.505]
+    ], {
+      color: '#4A6741',
+      weight: 2,
+      fillColor: '#4A6741',
+      fillOpacity: 0.15
+    }).addTo(map);
+
+    deliveryZone.bindPopup('<strong>Zona de entrega activa</strong><br>Valle de los Chillos y alrededores');
+
+    // Marker at center
+    L.marker([-0.31, -78.45]).addTo(map)
+      .bindPopup('<strong>Nelsmari Sous Vide</strong><br>Valle de los Chillos, Ecuador')
+      .openPopup();
+  </script>
 </body>
 </html>

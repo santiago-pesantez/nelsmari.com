@@ -126,7 +126,7 @@ const Menu = (() => {
     const product = allProducts.find(p => p.id === productId);
     if (product) {
       Cart.addItem(product);
-      refreshCards();
+      updateCard(productId);
     }
   }
 
@@ -138,7 +138,26 @@ const Menu = (() => {
     } else {
       Cart.updateQty(productId, newQty);
     }
-    refreshCards();
+    updateCard(productId);
+  }
+
+  /**
+   * Actualiza solo la card del producto afectado sin re-renderizar todo el grid.
+   * Esto evita el salto de scroll en mobile.
+   */
+  function updateCard(productId) {
+    const card = grid.querySelector(`.card--menu[data-id="${productId}"]`);
+    const product = allProducts.find(p => p.id === productId);
+    if (!card || !product) {
+      renderProducts();
+      return;
+    }
+
+    const temp = document.createElement('div');
+    temp.innerHTML = renderCard(product);
+    const newCard = temp.firstElementChild;
+
+    card.replaceWith(newCard);
   }
 
   function refreshCards() {

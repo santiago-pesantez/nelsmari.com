@@ -1,0 +1,12 @@
+# Archivos de referencia del cliente
+_referencia/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+*.swp
+*.swo

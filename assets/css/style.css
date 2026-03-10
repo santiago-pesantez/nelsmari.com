@@ -217,8 +217,14 @@ p {
 }
 
 .header__logo-img {
-  height: 48px;
+  height: 64px;
   width: auto;
+}
+
+@media (min-width: 768px) {
+  .header__logo-img {
+    height: 72px;
+  }
 }
 
 .header__nav {
@@ -530,6 +536,11 @@ p {
 /* Spacer to prevent cart float from covering content */
 body:has(.cart-float.has-items) {
   padding-bottom: 60px;
+}
+
+/* Move WhatsApp float up when cart float is visible */
+body:has(.cart-float.has-items) .whatsapp-float {
+  bottom: calc(var(--space-lg) + 56px);
 }
 
 .cart-float__info {
@@ -847,18 +858,25 @@ body:has(.cart-float.has-items) {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, var(--color-bg-warm) 0%, #E8DFD0 100%);
+  background: linear-gradient(135deg, #3D5A2E 0%, #4A6741 50%, #2D4A1E 100%);
+  position: relative;
 }
 
 .card__image--placeholder::after {
-  content: '';
-  display: block;
-  width: 48px;
-  height: 48px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 24 24' fill='none' stroke='%23C9A84C' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 2l0 7c0 1.1.9 2 2 2h4c1.1 0 2-.9 2-2V2'/%3E%3Cpath d='M7 2v20'/%3E%3Cpath d='M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: center;
-  opacity: 0.5;
+  content: attr(data-name);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  padding: var(--space-lg);
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.85);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  line-height: 1.3;
 }
 
 .card__image--placeholder img {
@@ -1790,18 +1808,24 @@ body:has(.cart-float.has-items) {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, var(--color-bg-warm) 0%, #E8DFD0 100%);
+  background: linear-gradient(135deg, #3D5A2E 0%, #4A6741 50%, #2D4A1E 100%);
 }
 
 .pd-image--placeholder::after {
-  content: '';
-  display: block;
-  width: 64px;
-  height: 64px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 24 24' fill='none' stroke='%23C9A84C' stroke-width='1' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 2l0 7c0 1.1.9 2 2 2h4c1.1 0 2-.9 2-2V2'/%3E%3Cpath d='M7 2v20'/%3E%3Cpath d='M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: center;
-  opacity: 0.4;
+  content: attr(data-name);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  padding: var(--space-2xl);
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.85);
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  line-height: 1.3;
 }
 
 .pd-image--placeholder img {

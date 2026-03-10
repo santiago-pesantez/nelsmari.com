@@ -26,7 +26,7 @@
           <img src="/assets/img/products/${product.imagen_miniatura}"
                alt="${product.nombre}"
                loading="lazy"
-               onerror="this.parentElement.classList.add('card__image--placeholder')">
+               onerror="this.parentElement.classList.add('card__image--placeholder'); this.parentElement.dataset.name='${product.nombre}'">
         </div>
         <div class="card__body">
           <h3 class="card__title">${product.nombre}</h3>

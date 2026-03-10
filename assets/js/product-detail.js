@@ -64,7 +64,7 @@
         <div class="pd-image">
           <img src="/assets/img/products/${product.imagen_grande}"
                alt="${product.nombre}"
-               onerror="this.parentElement.classList.add('pd-image--placeholder')">
+               onerror="this.parentElement.classList.add('pd-image--placeholder'); this.parentElement.dataset.name='${product.nombre}'">
         </div>
 
         <!-- Info -->

@@ -75,7 +75,7 @@ const Menu = (() => {
           <img src="/assets/img/products/${product.imagen_miniatura}"
                alt="${product.nombre}"
                loading="lazy"
-               onerror="this.parentElement.classList.add('card__image--placeholder')">
+               onerror="this.parentElement.classList.add('card__image--placeholder'); this.parentElement.dataset.name='${product.nombre}'">
         </a>
         <div class="card__body">
           <a href="/sous-vide/producto/?id=${product.id}" class="card__title-link">

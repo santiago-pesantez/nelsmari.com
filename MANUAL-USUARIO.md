@@ -237,6 +237,28 @@ Los combos se calculan **automaticamente** cuando el cliente agrega productos al
 3. Luego intenta Combo Balanceado con los items restantes
 4. Finalmente aplica la Promo Lanzamiento si quedan 4+ proteinas y hay vegetales
 
+### Tips inteligentes en el checkout
+
+La pagina de checkout muestra **sugerencias dinamicas** al cliente basadas en lo que tiene en su carrito. Los tips se actualizan automaticamente cada vez que el cliente agrega o quita productos.
+
+Ejemplos de lo que ve el cliente segun su carrito:
+
+| El carrito tiene | Tip que se muestra |
+|---|---|
+| 1 proteina solamente | "Agrega **1 carbohidrato** y **1 vegetal** para completar un **Combo Balanceado** y ahorrar $0,50" |
+| 1 proteina + 1 carbohidrato | "Agrega **1 vegetal** para completar un **Combo Balanceado** y ahorrar $0,50" |
+| 2 proteinas | "Agrega **2 proteinas** mas para ganar **1 vegetal gratis**" |
+| 3 proteinas | "Agrega **1 proteina** mas para ganar **1 vegetal gratis**" |
+| 4 proteinas, 0 vegetales | "Ya tienes 4 proteinas. **Agrega 1 vegetal y es gratis!**" |
+| Combo Balanceado ya aplicado | Sugiere la siguiente promo disponible |
+
+Los tips funcionan de forma inteligente:
+
+- Se muestran **junto con** los combos ya aplicados (no se reemplazan)
+- Priorizan la promo mas cercana a completarse
+- Si el carrito ya tiene todos los combos posibles, no muestra tips innecesarios
+- No requieren configuracion — se generan automaticamente desde las definiciones de combos
+
 ### Donde se configuran
 
 Los combos estan definidos en `assets/js/combos.js`. Para modificar precios o condiciones, edita estas secciones:

@@ -30,7 +30,7 @@ El sitio está construido sin frameworks ni dependencias de build — solo **HTM
 |:---|:---|
 | **Menú dinámico** | Se carga desde `products.csv` con PapaParse. Editar el CSV actualiza todo el menú. |
 | **Carrito persistente** | Almacenado en `localStorage`. Sidebar en desktop, barra flotante en mobile. |
-| **Combos automáticos** | Detecta y aplica descuentos (Combo Balanceado, Combo Nelsmari, Promo Lanzamiento). |
+| **Combos automáticos** | Detecta y aplica descuentos (Combo Balanceado, Combo Nelsmari, Promo Lanzamiento). Tips dinámicos que sugieren al cliente cómo completar la siguiente promo. |
 | **Pedidos por WhatsApp** | El checkout genera un mensaje formateado y abre WhatsApp con un clic. |
 | **Mapa de zonas** | Mapa interactivo con Leaflet.js mostrando el polígono de cobertura de entrega. |
 | **Hero slideshow** | Imágenes de fondo que rotan con transiciones suaves cada 5 segundos. |
@@ -75,8 +75,8 @@ nelsmari.com/
 │   ├── js/
 │   │   ├── cart.js             # Carrito (localStorage + UI)
 │   │   ├── menu.js             # Menú dinámico con filtros
-│   │   ├── combos.js           # Motor de combos y promociones
-│   │   ├── checkout.js         # Página de checkout
+│   │   ├── combos.js           # Motor de combos, promociones y tips dinámicos
+│   │   ├── checkout.js         # Página de checkout con sugerencias inteligentes
 │   │   ├── whatsapp.js         # Generador de mensajes WhatsApp
 │   │   ├── home.js             # Platos destacados en home
 │   │   └── product-detail.js   # Página de detalle de producto
@@ -103,6 +103,8 @@ Los descuentos se calculan automáticamente en el carrito:
 | **Combo Balanceado** | 1 proteína + 1 carbohidrato + 1 vegetal | **$5,00** (ahorro $0,50) |
 | **Combo Nelsmari** | 5 proteínas + 5 carbohidratos + 4 vegetales | **$25,00** (ahorro $2,50) |
 | **Promo Lanzamiento** | Compra 4 proteínas → 1 vegetal gratis | ahorro $1,00 |
+
+El checkout incluye **tips dinámicos** que analizan el carrito del cliente y sugieren cómo completar la siguiente promo. Por ejemplo: si tiene 3 proteínas, le sugiere agregar 1 más para ganar un vegetal gratis. Los tips se generan automáticamente desde las definiciones de combos.
 
 ## Gestión de contenido
 

@@ -84,12 +84,20 @@
             </div>
           `).join('')}
         </div>
-      ` : `
-        <div class="checkout-tip">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-          <span>Arma un <strong>Combo Balanceado</strong> (1 proteína + 1 carbo + 1 vegetal) y ahorra $0,50</span>
-        </div>
-      `}
+      ` : ''}
+
+      <!-- Tips dinámicos -->
+      ${(() => {
+        const tips = Combos.getTips(items, allProducts);
+        if (tips.length === 0) return '';
+        const tipIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>';
+        return tips.map(tip => `
+          <div class="checkout-tip">
+            ${tipIcon}
+            <span>${tip}</span>
+          </div>
+        `).join('');
+      })()}
 
       <!-- Totales -->
       <div class="checkout-totals">

@@ -25,9 +25,9 @@ const Combos = (() => {
     {
       id: 'combo-nelsmari',
       nombre: 'Combo Nelsmari',
-      descripcion: '5 proteínas + 5 carbohidratos + 4 vegetales',
-      requires: { proteinas: 5, carbohidratos: 5, vegetales: 4 },
-      precio: 25.00,
+      descripcion: '5 proteínas + 5 carbohidratos + 5 vegetales',
+      requires: { proteinas: 5, carbohidratos: 5, vegetales: 5 },
+      precio: 24.00,
       precioNormal: 27.50
     }
   ];

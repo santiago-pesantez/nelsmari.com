@@ -101,7 +101,7 @@ Los descuentos se calculan automáticamente en el carrito:
 | Combo | Contenido | Precio |
 |:---|:---|:---:|
 | **Combo Balanceado** | 1 proteína + 1 carbohidrato + 1 vegetal | **$5,00** (ahorro $0,50) |
-| **Combo Nelsmari** | 5 proteínas + 5 carbohidratos + 4 vegetales | **$25,00** (ahorro $2,50) |
+| **Combo Nelsmari** | 5 proteínas + 5 carbohidratos + 5 vegetales | **$24,00** (ahorro $3,50) |
 | **Promo Lanzamiento** | Compra 4 proteínas → 1 vegetal gratis | ahorro $1,00 |
 
 El checkout incluye **tips dinámicos** que analizan el carrito del cliente y sugieren cómo completar la siguiente promo. Por ejemplo: si tiene 3 proteínas, le sugiere agregar 1 más para ganar un vegetal gratis. Los tips se generan automáticamente desde las definiciones de combos.

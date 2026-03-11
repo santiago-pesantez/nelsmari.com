@@ -227,7 +227,7 @@ Los combos se calculan **automaticamente** cuando el cliente agrega productos al
 | Combo | Contenido | Precio normal | Precio combo | Ahorro |
 |-------|-----------|:------------:|:------------:|:------:|
 | **Combo Balanceado** | 1 proteina + 1 carbohidrato + 1 vegetal | $5,50 | **$5,00** | $0,50 |
-| **Combo Nelsmari** | 5 proteinas + 5 carbohidratos + 4 vegetales | $27,50 | **$25,00** | $2,50 |
+| **Combo Nelsmari** | 5 proteinas + 5 carbohidratos + 5 vegetales | $27,50 | **$24,00** | $3,50 |
 | **Promo Lanzamiento** | Compra 4 proteinas → 1 vegetal gratis | — | — | $1,00 |
 
 ### Como funciona la deteccion
@@ -277,9 +277,9 @@ const COMBO_DEFS = [
   {
     id: 'combo-nelsmari',
     nombre: 'Combo Nelsmari',
-    descripcion: '5 proteinas + 5 carbohidratos + 4 vegetales',
-    requires: { proteinas: 5, carbohidratos: 5, vegetales: 4 },
-    precio: 25.00,
+    descripcion: '5 proteinas + 5 carbohidratos + 5 vegetales',
+    requires: { proteinas: 5, carbohidratos: 5, vegetales: 5 },
+    precio: 24.00,
     precioNormal: 27.50
   }
 ];

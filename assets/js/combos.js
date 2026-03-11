@@ -106,6 +106,7 @@ const Combos = (() => {
 
     return {
       applied,
+      remaining,
       subtotal,
       descuento: totalDescuento,
       total: subtotal - totalDescuento
@@ -130,24 +131,28 @@ const Combos = (() => {
   }
 
   const CAT_LABELS = {
-    proteinas: 'proteína',
-    carbohidratos: 'carbohidrato',
-    vegetales: 'vegetal'
+    proteinas: ['proteína', 'proteínas'],
+    carbohidratos: ['carbohidrato', 'carbohidratos'],
+    vegetales: ['vegetal', 'vegetales']
   };
 
-  function plural(n, singular) {
-    return n === 1 ? `${n} ${singular}` : `${n} ${singular}s`;
+  function plural(n, cat) {
+    const labels = CAT_LABELS[cat];
+    return n === 1 ? `${n} ${labels[0]}` : `${n} ${labels[1]}`;
   }
 
   /**
-   * Genera tips dinámicos basados en lo que tiene el carrito.
-   * Retorna un array de strings con sugerencias para el usuario.
+   * Genera tips dinámicos basados en los items restantes del carrito
+   * (después de aplicar combos). Usa el resultado de calculate().
    */
-  function getTips(cartItems, products) {
-    const counts = countByCategory(cartItems, products);
+  function getTips(comboResult, cartItems, products) {
+    const remaining = comboResult.remaining;
+    const totalItems = cartItems.reduce((sum, item) => sum + item.qty, 0);
     const tips = [];
 
-    // Verificar cada combo: qué le falta al usuario
+    if (totalItems === 0) return tips;
+
+    // Verificar cada combo: qué le falta al usuario con los items restantes
     for (const combo of COMBO_DEFS) {
       const missing = {};
       let totalMissing = 0;
@@ -155,7 +160,7 @@ const Combos = (() => {
 
       for (const cat of Object.keys(combo.requires)) {
         const need = combo.requires[cat];
-        const has = counts[cat] || 0;
+        const has = remaining[cat] || 0;
         if (has < need) {
           missing[cat] = need - has;
           totalMissing += need - has;
@@ -163,31 +168,30 @@ const Combos = (() => {
         totalHas += Math.min(has, need);
       }
 
-      const totalRequired = Object.values(combo.requires).reduce((a, b) => a + b, 0);
       const ahorro = Cart.formatPrice(combo.precioNormal - combo.precio);
 
-      // Si ya tiene al menos 1 item de lo que necesita y le falta poco
       if (totalHas > 0 && totalMissing > 0 && totalMissing <= 3) {
+        // Tiene parte del combo, le falta poco → sugerencia específica
         const parts = Object.entries(missing).map(
-          ([cat, n]) => `<strong>${plural(n, CAT_LABELS[cat])}</strong>`
+          ([cat, n]) => `<strong>${plural(n, cat)}</strong>`
         );
         tips.push(`Agrega ${parts.join(' y ')} para completar un <strong>${combo.nombre}</strong> y ahorrar ${ahorro}`);
-      } else if (totalHas === 0) {
-        // No tiene nada de este combo, mostrar sugerencia genérica
+      } else if (totalHas === 0 && comboResult.applied.length === 0) {
+        // No tiene nada y no tiene combos aplicados → sugerencia genérica
         tips.push(`Arma un <strong>${combo.nombre}</strong> (${combo.descripcion}) y ahorra ${ahorro}`);
       }
     }
 
-    // Promo 4 proteínas
-    const protCount = counts.proteinas || 0;
-    const vegCount = counts.vegetales || 0;
+    // Promo 4 proteínas → usar items restantes
+    const protRemaining = remaining.proteinas || 0;
+    const vegRemaining = remaining.vegetales || 0;
 
-    if (protCount >= PROMO_4P.requiresProteinas && vegCount === 0) {
-      // Tiene 4+ proteínas pero no tiene vegetal → decirle que agarre uno gratis
-      tips.unshift(`Ya tienes ${protCount} proteínas. <strong>Agrega 1 vegetal y es gratis!</strong>`);
-    } else if (protCount >= 1 && protCount < PROMO_4P.requiresProteinas) {
-      const faltan = PROMO_4P.requiresProteinas - protCount;
-      tips.push(`Agrega <strong>${plural(faltan, 'proteína')}</strong> más para ganar <strong>1 vegetal gratis</strong>`);
+    if (protRemaining >= PROMO_4P.requiresProteinas && vegRemaining === 0) {
+      // Tiene 4+ proteínas restantes pero no vegetal → decirle que agarre uno gratis
+      tips.unshift(`Tienes ${protRemaining} proteínas sin combo. <strong>Agrega 1 vegetal y es gratis!</strong>`);
+    } else if (protRemaining >= 1 && protRemaining < PROMO_4P.requiresProteinas) {
+      const faltan = PROMO_4P.requiresProteinas - protRemaining;
+      tips.push(`Agrega <strong>${plural(faltan, 'proteinas')}</strong> más para ganar <strong>1 vegetal gratis</strong>`);
     }
 
     return tips;

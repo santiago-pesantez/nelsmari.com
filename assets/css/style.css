@@ -2159,3 +2159,107 @@ body:has(.cart-float.has-items) .whatsapp-float {
     grid-template-columns: repeat(5, 1fr);
   }
 }
+
+/* --- Micro-interactions --- */
+
+/* Btn press effect */
+.btn:active {
+  transform: scale(0.96);
+}
+
+/* Qty button tap feedback */
+.qty-selector__btn:active {
+  transform: scale(0.9);
+  transition: transform 80ms ease;
+}
+
+/* WhatsApp float pulse on idle */
+.whatsapp-float {
+  animation: wa-pulse 3s ease-in-out infinite;
+}
+
+@keyframes wa-pulse {
+  0%, 100% { box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3); }
+  50% { box-shadow: 0 4px 24px rgba(37, 211, 102, 0.5); }
+}
+
+.whatsapp-float:hover {
+  animation: none;
+  transform: scale(1.1);
+}
+
+/* Cart float slide-in */
+.cart-float {
+  transform: translateY(100%);
+  transition: transform var(--transition-base), opacity var(--transition-base);
+  opacity: 0;
+}
+
+.cart-float.has-items {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Promo card hover */
+.promo-card {
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.promo-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Benefit card entrance */
+.benefit {
+  transition: transform var(--transition-base), opacity var(--transition-base);
+}
+
+.benefit:hover {
+  transform: translateY(-4px);
+}
+
+.benefit:hover .benefit__icon {
+  transform: scale(1.1);
+  transition: transform var(--transition-base);
+}
+
+/* Category card hover */
+.category-card {
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.category-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Info card hover (seguridad page) */
+.info-card {
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.info-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Step number bounce on hover */
+.step:hover .step__number {
+  transform: scale(1.15);
+  transition: transform var(--transition-base);
+}
+
+/* Smooth checkout item removal */
+.checkout-item {
+  transition: opacity var(--transition-base), transform var(--transition-base);
+}
+
+/* Cart sidebar item hover */
+.cart-item {
+  transition: background var(--transition-fast);
+}
+
+.cart-item:hover {
+  background: rgba(var(--color-primary-rgb), 0.04);
+}

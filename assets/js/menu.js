@@ -121,6 +121,12 @@ const Menu = (() => {
     const product = allProducts.find(p => p.id === productId);
     if (product) {
       Cart.addItem(product);
+      // Brief flash feedback on the card
+      const card = grid.querySelector(`.card--menu[data-id="${productId}"]`);
+      if (card) {
+        card.style.boxShadow = '0 0 0 2px var(--color-secondary)';
+        setTimeout(() => { card.style.boxShadow = ''; }, 300);
+      }
       updateCard(productId);
     }
   }

@@ -1698,6 +1698,30 @@ body:has(.cart-float.has-items) .whatsapp-float {
   line-height: 1.7;
 }
 
+.cert-list {
+  list-style: none;
+  padding: 0;
+  margin: var(--space-md) 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.cert-list li {
+  background: var(--color-bg-warm);
+  padding: var(--space-md) var(--space-lg);
+  border-radius: var(--border-radius);
+  line-height: 1.6;
+}
+
+.cert-list li a {
+  display: inline-block;
+  margin-top: var(--space-xs);
+  color: var(--color-secondary);
+  font-weight: 700;
+  font-size: var(--text-sm);
+}
+
 /* --- Delivery Map (Zonas) --- */
 .delivery-map {
   width: 100%;

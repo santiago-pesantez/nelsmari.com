@@ -10,16 +10,11 @@ const Menu = (() => {
   let allProducts = [];
   let activeCategory = 'todas';
 
-  // Load CSV
-  Papa.parse('/products.csv', {
-    download: true,
-    header: true,
-    skipEmptyLines: true,
-    complete(results) {
-      allProducts = results.data.filter(p => p.disponible === 'true');
-      renderProducts();
-      setupFilters();
-    }
+  // Load CSV (shared cache)
+  CsvLoader.load().then(data => {
+    allProducts = data.filter(p => p.disponible === 'true');
+    renderProducts();
+    setupFilters();
   });
 
   function getCategoryLabel(cat) {

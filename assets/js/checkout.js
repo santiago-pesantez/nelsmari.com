@@ -10,15 +10,10 @@
   let allProducts = [];
   let comboResult = null;
 
-  // Load products for combo detection
-  Papa.parse('/products.csv', {
-    download: true,
-    header: true,
-    skipEmptyLines: true,
-    complete(results) {
-      allProducts = results.data;
-      render();
-    }
+  // Load products for combo detection (shared cache)
+  CsvLoader.load().then(data => {
+    allProducts = data;
+    render();
   });
 
   function render() {

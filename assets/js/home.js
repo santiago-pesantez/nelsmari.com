@@ -7,16 +7,11 @@
   const grid = document.getElementById('featured-products');
   if (!grid) return;
 
-  Papa.parse('/products.csv', {
-    download: true,
-    header: true,
-    skipEmptyLines: true,
-    complete(results) {
-      const featured = results.data.filter(
-        p => p.disponible === 'true' && p.destacado === 'true'
-      );
-      renderFeatured(featured);
-    }
+  CsvLoader.load().then(data => {
+    const featured = data.filter(
+      p => p.disponible === 'true' && p.destacado === 'true'
+    );
+    renderFeatured(featured);
   });
 
   function renderFeatured(products) {

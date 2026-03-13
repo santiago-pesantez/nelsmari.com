@@ -15,20 +15,14 @@
     return;
   }
 
-  Papa.parse('/products.csv', {
-    download: true,
-    header: true,
-    skipEmptyLines: true,
-    complete(results) {
-      const product = results.data.find(p => p.id === productId);
-      if (!product) {
-        showNotFound();
-        return;
-      }
-      render(product);
-      // Update page title
-      document.title = `${product.nombre} — Nelsmari Sous Vide`;
+  CsvLoader.load().then(data => {
+    const product = data.find(p => p.id === productId);
+    if (!product) {
+      showNotFound();
+      return;
     }
+    render(product);
+    document.title = `${product.nombre} — Nelsmari Sous Vide`;
   });
 
   function showNotFound() {

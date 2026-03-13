@@ -7,4 +7,24 @@
   <url><loc>https://nelsmari.com/sous-vide/seguridad.html</loc><priority>0.6</priority></url>
   <url><loc>https://nelsmari.com/sous-vide/zonas.html</loc><priority>0.7</priority></url>
   <url><loc>https://nelsmari.com/sous-vide/nosotros.html</loc><priority>0.7</priority></url>
+  <!-- Productos individuales -->
+  <url><loc>https://nelsmari.com/sous-vide/producto/?id=salon-vaca-demi-glace</loc><priority>0.6</priority></url>
+  <url><loc>https://nelsmari.com/sous-vide/producto/?id=filete-pollo-naranja</loc><priority>0.6</priority></url>
+  <url><loc>https://nelsmari.com/sous-vide/producto/?id=pesca-blanca-mariscos</loc><priority>0.6</priority></url>
+  <url><loc>https://nelsmari.com/sous-vide/producto/?id=boeuf-stroganoff</loc><priority>0.6</priority></url>
+  <url><loc>https://nelsmari.com/sous-vide/producto/?id=cubos-pollo-teriyaki</loc><priority>0.6</priority></url>
+  <url><loc>https://nelsmari.com/sous-vide/producto/?id=pesca-blanca-chimichurri</loc><priority>0.6</priority></url>
+  <url><loc>https://nelsmari.com/sous-vide/producto/?id=solomillo-cerdo-ciruela</loc><priority>0.6</priority></url>
+  <url><loc>https://nelsmari.com/sous-vide/producto/?id=medallon-pavo-relleno</loc><priority>0.6</priority></url>
+  <url><loc>https://nelsmari.com/sous-vide/producto/?id=camarones-pomodoro</loc><priority>0.6</priority></url>
+  <url><loc>https://nelsmari.com/sous-vide/producto/?id=arroz-chaufa</loc><priority>0.5</priority></url>
+  <url><loc>https://nelsmari.com/sous-vide/producto/?id=pure-papa</loc><priority>0.5</priority></url>
+  <url><loc>https://nelsmari.com/sous-vide/producto/?id=majado-verde</loc><priority>0.5</priority></url>
+  <url><loc>https://nelsmari.com/sous-vide/producto/?id=arroz-curry-vegetales</loc><priority>0.5</priority></url>
+  <url><loc>https://nelsmari.com/sous-vide/producto/?id=pasta-pesto</loc><priority>0.5</priority></url>
+  <url><loc>https://nelsmari.com/sous-vide/producto/?id=escabeche</loc><priority>0.5</priority></url>
+  <url><loc>https://nelsmari.com/sous-vide/producto/?id=peperonata</loc><priority>0.5</priority></url>
+  <url><loc>https://nelsmari.com/sous-vide/producto/?id=vegetales-salteados</loc><priority>0.5</priority></url>
+  <url><loc>https://nelsmari.com/sous-vide/producto/?id=ensalada-frejol</loc><priority>0.5</priority></url>
+  <url><loc>https://nelsmari.com/sous-vide/producto/?id=vegetales-braseados</loc><priority>0.5</priority></url>
 </urlset>

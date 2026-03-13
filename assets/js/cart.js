@@ -68,7 +68,10 @@ const Cart = (() => {
     return getItems().reduce((sum, item) => sum + item.qty, 0);
   }
 
-  function clear() {
+  function clear(skipConfirm) {
+    if (!skipConfirm && getCount() > 0) {
+      if (!confirm('¿Seguro que quieres vaciar el carrito?')) return;
+    }
     localStorage.removeItem(STORAGE_KEY);
     updateUI();
     listeners.forEach(fn => fn([]));

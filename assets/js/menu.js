@@ -104,8 +104,20 @@ const Menu = (() => {
           `;
         }).join('');
     } else {
-      grid.className = 'menu-grid menu-grid--flat';
-      grid.innerHTML = filtered.map(p => renderCard(p)).join('');
+      const count = filtered.length;
+      const countLabel = `${count} plato${count !== 1 ? 's' : ''}`;
+      grid.className = 'menu-grid menu-grid--grouped';
+      grid.innerHTML = `
+        <section class="menu-group" data-category="${activeCategory}">
+          <div class="menu-category-header">
+            <h2 class="menu-category-title">${getCategoryLabel(activeCategory)}</h2>
+            <span class="menu-category-count">${countLabel}</span>
+          </div>
+          <div class="menu-group__cards">
+            ${filtered.map(p => renderCard(p)).join('')}
+          </div>
+        </section>
+      `;
     }
   }
 

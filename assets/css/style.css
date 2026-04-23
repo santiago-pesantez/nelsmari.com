@@ -1107,10 +1107,15 @@ body:has(.cart-float.has-items) .back-to-top {
 
 .menu-grid--grouped {
   display: block;
+  scroll-margin-top: calc(var(--header-height, 96px) + var(--space-md));
 }
 
 .menu-group + .menu-group {
   margin-top: var(--space-xl);
+}
+
+.menu-group {
+  scroll-margin-top: calc(var(--header-height, 96px) + var(--space-md));
 }
 
 .menu-group__cards {

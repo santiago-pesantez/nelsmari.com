@@ -88,6 +88,7 @@ const Menu = (() => {
 
     // Empty state
     if (filtered.length === 0) {
+      grid.className = 'menu-grid menu-grid--flat';
       grid.innerHTML = `
         <div class="menu-empty">
           <h3>No encontramos resultados</h3>
@@ -106,15 +107,26 @@ const Menu = (() => {
       });
 
       const order = ['proteinas', 'carbohidratos', 'vegetales'];
+      grid.className = 'menu-grid menu-grid--grouped';
       grid.innerHTML = order
         .filter(cat => groups[cat])
-        .map(cat => `
-          <div class="menu-category-header" style="grid-column: 1 / -1;">
-            <h2 class="menu-category-title">${getCategoryLabel(cat)}</h2>
-          </div>
-          ${groups[cat].map(p => renderCard(p)).join('')}
-        `).join('');
+        .map(cat => {
+          const count = groups[cat].length;
+          const countLabel = `${count} plato${count !== 1 ? 's' : ''}`;
+          return `
+            <section class="menu-group" data-category="${cat}">
+              <div class="menu-category-header">
+                <h2 class="menu-category-title">${getCategoryLabel(cat)}</h2>
+                <span class="menu-category-count">${countLabel}</span>
+              </div>
+              <div class="menu-group__cards">
+                ${groups[cat].map(p => renderCard(p)).join('')}
+              </div>
+            </section>
+          `;
+        }).join('');
     } else {
+      grid.className = 'menu-grid menu-grid--flat';
       grid.innerHTML = filtered.map(p => renderCard(p)).join('');
     }
   }
@@ -253,6 +265,18 @@ const Menu = (() => {
 
   function refreshCards() {
     renderProducts();
+  }
+
+  // --- Back to top button ---
+  const backToTop = document.getElementById('back-to-top');
+  if (backToTop) {
+    const anchor = document.getElementById('category-filters') || grid;
+    window.addEventListener('scroll', () => {
+      backToTop.classList.toggle('is-visible', window.scrollY > 600);
+    }, { passive: true });
+    backToTop.addEventListener('click', () => {
+      anchor.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
   }
 
   return { addProduct, changeQty, refreshCards };

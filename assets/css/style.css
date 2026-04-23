@@ -553,6 +553,45 @@ body:has(.cart-float.has-items) .whatsapp-float {
   bottom: calc(var(--space-lg) + 56px);
 }
 
+/* --- Back to Top button --- */
+.back-to-top {
+  position: fixed;
+  bottom: calc(var(--space-lg) + 56px + var(--space-sm));
+  right: var(--space-lg);
+  width: 44px;
+  height: 44px;
+  background-color: var(--color-bg-white);
+  color: var(--color-primary);
+  border: 1px solid rgba(var(--color-primary-rgb), 0.15);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  z-index: 90;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(8px);
+  transition: opacity var(--transition-base), transform var(--transition-base), background-color var(--transition-base), color var(--transition-base);
+}
+
+.back-to-top.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.back-to-top:hover {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  transform: translateY(-2px);
+}
+
+body:has(.cart-float.has-items) .back-to-top {
+  bottom: calc(var(--space-lg) + 56px + var(--space-sm) + 56px);
+}
+
 .cart-float__info {
   display: flex;
   align-items: center;
@@ -1048,20 +1087,84 @@ body:has(.cart-float.has-items) .whatsapp-float {
   margin-bottom: var(--space-lg);
 }
 
+/* --- Menu grid modes (grouped vs flat) --- */
+.menu-grid--flat {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+}
+
+@media (min-width: 768px) {
+  .menu-grid--flat { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1024px) {
+  .menu-grid--flat { grid-template-columns: repeat(3, 1fr); }
+}
+
+.menu-grid--grouped {
+  display: block;
+}
+
+.menu-group + .menu-group {
+  margin-top: var(--space-xl);
+}
+
+.menu-group__cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+}
+
+@media (min-width: 768px) {
+  .menu-group__cards { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1024px) {
+  .menu-group__cards { grid-template-columns: repeat(3, 1fr); }
+}
+
 .menu-category-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-md);
   padding-top: var(--space-lg);
   padding-bottom: var(--space-sm);
   border-bottom: 2px solid var(--color-accent);
   margin-bottom: var(--space-sm);
+  background-color: var(--color-bg-white);
 }
 
-.menu-category-header:first-child {
+.menu-group:first-child .menu-category-header {
   padding-top: 0;
 }
 
 .menu-category-title {
   font-size: var(--text-xl);
   margin-bottom: 0;
+}
+
+.menu-category-count {
+  font-size: var(--text-sm);
+  color: var(--color-text-light);
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+/* Sticky category header on mobile */
+@media (max-width: 767px) {
+  .menu-category-header {
+    position: sticky;
+    top: 96px;
+    z-index: 10;
+    padding-top: var(--space-sm);
+    margin-bottom: var(--space-md);
+  }
+
+  .menu-group:first-child .menu-category-header {
+    padding-top: var(--space-sm);
+  }
 }
 
 /* --- Promos Banner (Menu page) --- */

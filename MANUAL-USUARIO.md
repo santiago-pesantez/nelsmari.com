@@ -380,5 +380,5 @@ git push
 
 Para cambios que requieran modificar codigo HTML, CSS o JavaScript, contactar al desarrollador.
 
-Numero de WhatsApp del sitio: **+593 995 052 703** (configurado en todos los botones y enlaces).
-Para cambiar este numero, se debe actualizar en todos los archivos HTML — contactar al desarrollador.
+Numero de WhatsApp del sitio: **+593 979 316 659** (configurado en `assets/js/config.js` en la constante `WHATSAPP_PHONE`).
+Email: **nelsmari.ec@gmail.com** (en el footer de la pagina principal y del menu).

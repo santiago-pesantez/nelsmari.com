@@ -4,7 +4,7 @@
  */
 
 const WhatsApp = (() => {
-  const PHONE = typeof Config !== 'undefined' ? Config.WHATSAPP_PHONE : '593995052703';
+  const PHONE = typeof Config !== 'undefined' ? Config.WHATSAPP_PHONE : '593979316659';
 
   function generateMessage(customerName, items, comboResult) {
     const lines = items.map(item =>

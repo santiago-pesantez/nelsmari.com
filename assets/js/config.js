@@ -4,7 +4,7 @@
  */
 
 const Config = (() => {
-  const WHATSAPP_PHONE = '593995052703';
+  const WHATSAPP_PHONE = '593979316659';
   const WHATSAPP_URL = 'https://wa.me/' + WHATSAPP_PHONE;
   const MIN_ORDER = 10.00;
   const BUSINESS_NAME = 'Nelsmari';

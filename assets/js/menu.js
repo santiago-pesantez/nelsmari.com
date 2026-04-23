@@ -1,7 +1,7 @@
 /**
  * Nelsmari Sous Vide — Menu Module
- * Carga products.csv con PapaParse y renderiza el catálogo con búsqueda,
- * filtros de categoría y ordenamiento.
+ * Carga products.csv con PapaParse y renderiza el catálogo con búsqueda
+ * y filtros de categoría.
  */
 
 const Menu = (() => {
@@ -10,12 +10,10 @@ const Menu = (() => {
   const countEl = document.getElementById('menu-count');
   const searchInput = document.getElementById('menu-search');
   const searchClear = document.getElementById('menu-search-clear');
-  const sortSelect = document.getElementById('menu-sort');
 
   let allProducts = [];
   let activeCategory = 'todas';
   let searchTerm = '';
-  let activeSort = '';
 
   // Load CSV (shared cache)
   CsvLoader.load().then(data => {
@@ -23,7 +21,6 @@ const Menu = (() => {
     renderProducts();
     setupFilters();
     setupSearch();
-    setupSort();
   });
 
   function getCategoryLabel(cat) {
@@ -50,25 +47,6 @@ const Menu = (() => {
         p.nombre.toLowerCase().includes(term) ||
         p.descripcion_corta.toLowerCase().includes(term)
       );
-    }
-
-    // Ordenamiento
-    if (activeSort) {
-      filtered = filtered.slice(); // copia para no mutar
-      switch (activeSort) {
-        case 'price-asc':
-          filtered.sort((a, b) => parseFloat(a.precio) - parseFloat(b.precio));
-          break;
-        case 'price-desc':
-          filtered.sort((a, b) => parseFloat(b.precio) - parseFloat(a.precio));
-          break;
-        case 'cal-asc':
-          filtered.sort((a, b) => parseInt(a.calorias) - parseInt(b.calorias));
-          break;
-        case 'protein-desc':
-          filtered.sort((a, b) => parseInt(b.proteinas_g) - parseInt(a.proteinas_g));
-          break;
-      }
     }
 
     return filtered;
@@ -98,8 +76,8 @@ const Menu = (() => {
       return;
     }
 
-    // Group by category if showing all and no sort active
-    if (activeCategory === 'todas' && !activeSort) {
+    // Group by category when showing all
+    if (activeCategory === 'todas') {
       const groups = {};
       filtered.forEach(p => {
         if (!groups[p.categoria]) groups[p.categoria] = [];
@@ -213,15 +191,6 @@ const Menu = (() => {
     }
   }
 
-  function setupSort() {
-    if (!sortSelect) return;
-
-    sortSelect.addEventListener('change', () => {
-      activeSort = sortSelect.value;
-      renderProducts();
-    });
-  }
-
   // --- Public actions ---
 
   function addProduct(productId) {
@@ -267,16 +236,25 @@ const Menu = (() => {
     renderProducts();
   }
 
-  // --- Back to top button ---
-  const backToTop = document.getElementById('back-to-top');
-  if (backToTop) {
-    const anchor = document.getElementById('category-filters') || grid;
-    window.addEventListener('scroll', () => {
-      backToTop.classList.toggle('is-visible', window.scrollY > 600);
-    }, { passive: true });
-    backToTop.addEventListener('click', () => {
-      anchor.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
+  // --- Header height → CSS variable (for sticky category headers on mobile) ---
+  function updateHeaderHeight() {
+    const header = document.querySelector('.header');
+    if (!header) return;
+    document.documentElement.style.setProperty('--header-height', header.offsetHeight + 'px');
+  }
+  updateHeaderHeight();
+  window.addEventListener('resize', updateHeaderHeight, { passive: true });
+
+  // --- Promos collapse/expand ---
+  const promosSection = document.getElementById('promos-section');
+  if (promosSection) {
+    const toggle = promosSection.querySelector('.menu-category-header--toggle');
+    if (toggle) {
+      toggle.addEventListener('click', () => {
+        const collapsed = promosSection.classList.toggle('is-collapsed');
+        toggle.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
+      });
+    }
   }
 
   return { addProduct, changeQty, refreshCards };

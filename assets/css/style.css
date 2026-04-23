@@ -553,45 +553,6 @@ body:has(.cart-float.has-items) .whatsapp-float {
   bottom: calc(var(--space-lg) + 56px);
 }
 
-/* --- Back to Top button --- */
-.back-to-top {
-  position: fixed;
-  bottom: calc(var(--space-lg) + 56px + var(--space-sm));
-  right: var(--space-lg);
-  width: 44px;
-  height: 44px;
-  background-color: var(--color-bg-white);
-  color: var(--color-primary);
-  border: 1px solid rgba(var(--color-primary-rgb), 0.15);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: var(--shadow-sm);
-  cursor: pointer;
-  z-index: 90;
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(8px);
-  transition: opacity var(--transition-base), transform var(--transition-base), background-color var(--transition-base), color var(--transition-base);
-}
-
-.back-to-top.is-visible {
-  opacity: 1;
-  pointer-events: auto;
-  transform: translateY(0);
-}
-
-.back-to-top:hover {
-  background-color: var(--color-primary);
-  color: var(--color-white);
-  transform: translateY(-2px);
-}
-
-body:has(.cart-float.has-items) .back-to-top {
-  bottom: calc(var(--space-lg) + 56px + var(--space-sm) + 56px);
-}
-
 .cart-float__info {
   display: flex;
   align-items: center;
@@ -1153,12 +1114,45 @@ body:has(.cart-float.has-items) .back-to-top {
   white-space: nowrap;
 }
 
+/* Toggle-style category header (used in promos for collapse/expand) */
+.menu-category-header--toggle {
+  width: 100%;
+  background-color: var(--color-bg-white);
+  font-family: inherit;
+  color: inherit;
+  cursor: pointer;
+  text-align: left;
+}
+
+.menu-category-chevron {
+  flex-shrink: 0;
+  color: var(--color-text-light);
+  transition: transform var(--transition-base);
+}
+
+.menu-group--promos.is-collapsed .menu-category-chevron {
+  transform: rotate(-90deg);
+}
+
+.menu-group--promos .promos-banner {
+  overflow: hidden;
+  transition: max-height 0.3s ease, margin 0.3s ease, opacity 0.2s ease;
+  max-height: 1200px;
+}
+
+.menu-group--promos.is-collapsed .promos-banner {
+  max-height: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  opacity: 0;
+}
+
 /* Sticky category header on mobile */
 @media (max-width: 767px) {
   .menu-category-header {
     position: sticky;
-    top: 96px;
-    z-index: 10;
+    top: var(--header-height, 96px);
+    z-index: 50;
     padding-top: var(--space-sm);
     margin-bottom: var(--space-md);
   }
@@ -2444,34 +2438,6 @@ body:has(.cart-float.has-items) .back-to-top {
 
 .menu-search__clear.is-visible {
   display: block;
-}
-
-/* --- Sort selector --- */
-.menu-toolbar {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: var(--space-sm) var(--space-md);
-  margin-bottom: var(--space-md);
-}
-
-.menu-sort {
-  margin-left: auto;
-}
-
-.menu-sort select {
-  appearance: none;
-  background: var(--color-bg-white);
-  border: 1px solid rgba(var(--color-primary-rgb), 0.15);
-  border-radius: var(--border-radius-full);
-  padding: 0.35rem 2rem 0.35rem 0.75rem;
-  font-size: var(--text-sm);
-  font-family: var(--font-body);
-  color: var(--color-text);
-  cursor: pointer;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23777' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 0.6rem center;
 }
 
 /* --- Empty search state --- */

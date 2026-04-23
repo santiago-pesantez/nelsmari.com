@@ -1,5 +1,5 @@
 /**
- * Nelsmari Sous Vide — Analytics Module
+ * Nelsmari Sous Vide - Analytics Module
  * Captura eventos del sitio y los envía a Google Sheets vía Apps Script.
  * Sin cookies, sin dependencias externas.
  */
@@ -57,7 +57,7 @@ const Analytics = (() => {
         queue.splice(0, queue.length - MAX_QUEUE);
       }
     } catch (e) {
-      // Silenciar — analytics nunca debe romper el sitio
+      // Silenciar - analytics nunca debe romper el sitio
     }
   }
 

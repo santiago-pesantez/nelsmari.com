@@ -1,5 +1,5 @@
 /* ============================================
-   NELSMARI SOUS VIDE — Design System v1.0
+   NELSMARI SOUS VIDE - Design System v1.0
    ============================================ */
 
 /* --- Google Fonts --- */
@@ -27,7 +27,7 @@
   --font-display: 'Playfair Display', Georgia, 'Times New Roman', serif;
   --font-body: 'Lato', 'Segoe UI', Tahoma, sans-serif;
 
-  /* Font sizes — fluid scale */
+  /* Font sizes - fluid scale */
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;
   --text-base: 1rem;
@@ -2215,7 +2215,7 @@ body:has(.cart-float.has-items) .back-to-top {
 }
 
 /* ============================================
-   RESPONSIVE — Tablet (768px+)
+   RESPONSIVE - Tablet (768px+)
    ============================================ */
 @media (min-width: 768px) {
   h1 { font-size: var(--text-4xl); }
@@ -2287,7 +2287,7 @@ body:has(.cart-float.has-items) .back-to-top {
 }
 
 /* ============================================
-   RESPONSIVE — Desktop (1024px+)
+   RESPONSIVE - Desktop (1024px+)
    ============================================ */
 @media (min-width: 1024px) {
   h1 { font-size: var(--text-5xl); }
@@ -2414,7 +2414,7 @@ body:has(.cart-float.has-items) .back-to-top {
 }
 
 /* ============================================
-   MEJORAS v2 — Búsqueda, ordenamiento, PWA, a11y
+   MEJORAS v2 - Búsqueda, ordenamiento, PWA, a11y
    ============================================ */
 
 /* --- Pedido mínimo warning --- */

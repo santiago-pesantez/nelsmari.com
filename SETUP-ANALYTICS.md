@@ -1,4 +1,4 @@
-# Configurar Analytics — Nelsmari Sous Vide
+# Configurar Analytics - Nelsmari Sous Vide
 
 El sitio ya tiene integrado un sistema de analytics custom que captura eventos y los envia a una hoja de Google Sheets. Solo falta crear la hoja y conectarla.
 
@@ -74,7 +74,7 @@ function doPost(e) {
    - **Ejecutar como:** `Yo (tu correo)`
    - **Quien tiene acceso:** `Cualquier persona`
 4. Haz click en **Implementar**
-5. Google te pedira autorizar el acceso — acepta todos los permisos
+5. Google te pedira autorizar el acceso - acepta todos los permisos
 6. **Copia la URL** que aparece (tiene este formato):
    ```
    https://script.google.com/macros/s/AKfycbw.../exec
@@ -104,7 +104,7 @@ function doPost(e) {
 1. Abre [nelsmari.com](https://nelsmari.com) en tu navegador
 2. Navega por algunas paginas, agrega productos al carrito
 3. Espera 30 segundos (o cierra la pestana)
-4. Abre tu hoja de Google Sheets — deberian aparecer filas nuevas en la pestana "Events"
+4. Abre tu hoja de Google Sheets - deberian aparecer filas nuevas en la pestana "Events"
 
 Si no aparece nada despues de 1 minuto:
 - Verifica que la URL en `analytics.js` es correcta
@@ -135,13 +135,13 @@ Si no aparece nada despues de 1 minuto:
 
 Con estos datos puedes analizar:
 
-- **Cuantas visitas tiene el sitio por dia** — filtrar por `page_view`
-- **Que productos son los mas vistos y agregados** — filtrar por `product_view` y `add_to_cart`
-- **Cuantos pedidos se completan por WhatsApp** — filtrar por `whatsapp_click`
-- **Tasa de conversion** — comparar `page_view` del menu vs `whatsapp_click`
-- **Que promos funcionan mejor** — filtrar por `combo_applied`
-- **Desde que dispositivo compran** — columna `device` en `page_view`
-- **Carritos abandonados** — `checkout_start` sin `whatsapp_click` en la misma sesion
+- **Cuantas visitas tiene el sitio por dia** - filtrar por `page_view`
+- **Que productos son los mas vistos y agregados** - filtrar por `product_view` y `add_to_cart`
+- **Cuantos pedidos se completan por WhatsApp** - filtrar por `whatsapp_click`
+- **Tasa de conversion** - comparar `page_view` del menu vs `whatsapp_click`
+- **Que promos funcionan mejor** - filtrar por `combo_applied`
+- **Desde que dispositivo compran** - columna `device` en `page_view`
+- **Carritos abandonados** - `checkout_start` sin `whatsapp_click` en la misma sesion
 
 ---
 

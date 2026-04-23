@@ -1,5 +1,5 @@
 /**
- * Nelsmari Sous Vide — Configuración central del negocio
+ * Nelsmari Sous Vide - Configuración central del negocio
  * Todas las constantes del negocio en un solo lugar.
  */
 

@@ -1,5 +1,5 @@
 /**
- * Nelsmari Sous Vide — Home Page
+ * Nelsmari Sous Vide - Home Page
  * Carga platos destacados desde products.csv
  */
 

@@ -1,5 +1,5 @@
 /**
- * Nelsmari Sous Vide — Product Detail Page
+ * Nelsmari Sous Vide - Product Detail Page
  * Lee ?id= de la URL y renderiza el detalle completo del producto
  */
 
@@ -22,7 +22,7 @@
       return;
     }
     render(product);
-    document.title = `${product.nombre} — Nelsmari Sous Vide`;
+    document.title = `${product.nombre} - Nelsmari Sous Vide`;
     if (typeof Analytics !== 'undefined') Analytics.track('product_view', { product_id: product.id });
     injectSchema(product);
   });

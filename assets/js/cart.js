@@ -1,5 +1,5 @@
 /**
- * Nelsmari Sous Vide — Cart Module
+ * Nelsmari Sous Vide - Cart Module
  * Maneja el carrito en localStorage
  */
 

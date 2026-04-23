@@ -1,4 +1,4 @@
-# Manual de Usuario — Nelsmari Sous Vide Website
+# Manual de Usuario - Nelsmari Sous Vide Website
 
 ## Tabla de Contenidos
 
@@ -56,13 +56,13 @@ assets/img/hero/
 
 Las fotos actuales son:
 
-**hero-1.jpg** — Ingredientes frescos (vista cenital)
+**hero-1.jpg** - Ingredientes frescos (vista cenital)
 ![hero-1](assets/img/hero/hero-1.jpg)
 
-**hero-2.jpg** — Mesa con platos preparados
+**hero-2.jpg** - Mesa con platos preparados
 ![hero-2](assets/img/hero/hero-2.jpg)
 
-**hero-3.jpg** — Ingredientes y pan artesanal
+**hero-3.jpg** - Ingredientes y pan artesanal
 ![hero-3](assets/img/hero/hero-3.jpg)
 
 ### Como cambiar las fotos del hero
@@ -192,9 +192,9 @@ arroz-chaufa,carbohidratos,Arroz chaufa,1.25,Arroz salteado al wok estilo chaufa
 
 ### Como quitar un producto del menu
 
-**Opcion A — Ocultar (recomendado):** Cambia `disponible` de `true` a `false`. El producto desaparece del menu pero se puede reactivar facilmente.
+**Opcion A - Ocultar (recomendado):** Cambia `disponible` de `true` a `false`. El producto desaparece del menu pero se puede reactivar facilmente.
 
-**Opcion B — Eliminar:** Borra la fila completa del CSV.
+**Opcion B - Eliminar:** Borra la fila completa del CSV.
 
 ### Como cambiar un precio
 
@@ -228,7 +228,7 @@ Los combos se calculan **automaticamente** cuando el cliente agrega productos al
 |-------|-----------|:------------:|:------------:|:------:|
 | **Combo Balanceado** | 1 proteina + 1 carbohidrato + 1 vegetal | $5,50 | **$5,00** | $0,50 |
 | **Combo Nelsmari** | 5 proteinas + 5 carbohidratos + 5 vegetales | $27,50 | **$24,00** | $3,50 |
-| **Promo Lanzamiento** | Compra 4 proteinas → 1 vegetal gratis | — | — | $1,00 |
+| **Promo Lanzamiento** | Compra 4 proteinas → 1 vegetal gratis | - | - | $1,00 |
 
 ### Como funciona la deteccion
 
@@ -257,7 +257,7 @@ Los tips funcionan de forma inteligente:
 - Se muestran **junto con** los combos ya aplicados (no se reemplazan)
 - Priorizan la promo mas cercana a completarse
 - Si el carrito ya tiene todos los combos posibles, no muestra tips innecesarios
-- No requieren configuracion — se generan automaticamente desde las definiciones de combos
+- No requieren configuracion - se generan automaticamente desde las definiciones de combos
 
 ### Donde se configuran
 

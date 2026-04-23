@@ -22,7 +22,7 @@
 
 **Nelsmari Sous Vide** es un emprendimiento ecuatoriano de comida gourmet preparada con la técnica sous vide (cocción al vacío a baja temperatura). Este repositorio contiene el sitio web estático que sirve como catálogo digital, sistema de pedidos y vitrina de la marca.
 
-El sitio está construido sin frameworks ni dependencias de build — solo **HTML, CSS y JavaScript vanilla** — y se despliega automáticamente en **GitHub Pages** con dominio personalizado.
+El sitio está construido sin frameworks ni dependencias de build - solo **HTML, CSS y JavaScript vanilla** - y se despliega automáticamente en **GitHub Pages** con dominio personalizado.
 
 ## Características
 
@@ -53,12 +53,12 @@ El sitio está construido sin frameworks ni dependencias de build — solo **HTM
 
 ## Stack técnico
 
-- **HTML5 / CSS3 / Vanilla JS** — sin frameworks, sin build tools
-- **PapaParse** (CDN) — parsing de CSV para el catálogo de productos
-- **Leaflet.js** (CDN) — mapa interactivo de zonas de entrega
-- **Google Fonts** — Playfair Display + Lato
-- **GitHub Pages** — hosting estático gratuito con dominio custom
-- **CSS Custom Properties** — sistema de diseño con variables para colores, tipografía y espaciado
+- **HTML5 / CSS3 / Vanilla JS** - sin frameworks, sin build tools
+- **PapaParse** (CDN) - parsing de CSV para el catálogo de productos
+- **Leaflet.js** (CDN) - mapa interactivo de zonas de entrega
+- **Google Fonts** - Playfair Display + Lato
+- **GitHub Pages** - hosting estático gratuito con dominio custom
+- **CSS Custom Properties** - sistema de diseño con variables para colores, tipografía y espaciado
 
 ## Estructura del proyecto
 

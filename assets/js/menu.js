@@ -1,5 +1,5 @@
 /**
- * Nelsmari Sous Vide — Menu Module
+ * Nelsmari Sous Vide - Menu Module
  * Carga products.csv con PapaParse y renderiza el catálogo con búsqueda
  * y filtros de categoría.
  */

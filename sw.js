@@ -1,9 +1,9 @@
 /**
- * Nelsmari Sous Vide — Service Worker
+ * Nelsmari Sous Vide - Service Worker
  * Cache-first para assets estáticos, network-first para CSV y HTML.
  */
 
-const CACHE_NAME = 'nelsmari-v5';
+const CACHE_NAME = 'nelsmari-v6';
 const STATIC_ASSETS = [
   '/',
   '/assets/css/style.css',

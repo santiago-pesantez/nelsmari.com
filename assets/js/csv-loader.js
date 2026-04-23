@@ -1,5 +1,5 @@
 /**
- * Nelsmari Sous Vide — CSV Loader (shared cache)
+ * Nelsmari Sous Vide - CSV Loader (shared cache)
  * Carga products.csv una sola vez y comparte los datos entre módulos
  */
 

@@ -1,5 +1,5 @@
 /**
- * Nelsmari Sous Vide — Checkout Page
+ * Nelsmari Sous Vide - Checkout Page
  * Renderiza resumen del pedido con combos y genera mensaje WhatsApp
  */
 

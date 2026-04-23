@@ -1,5 +1,5 @@
 /**
- * Nelsmari Sous Vide — Combos & Promotions
+ * Nelsmari Sous Vide - Combos & Promotions
  * Detecta automáticamente combos aplicables al carrito
  */
 

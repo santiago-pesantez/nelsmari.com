@@ -1,5 +1,5 @@
 /**
- * Nelsmari Sous Vide — WhatsApp Message Generator
+ * Nelsmari Sous Vide - WhatsApp Message Generator
  * Genera el mensaje de pedido y abre WhatsApp
  */
 
@@ -8,7 +8,7 @@ const WhatsApp = (() => {
 
   function generateMessage(customerName, items, comboResult) {
     const lines = items.map(item =>
-      `• ${item.qty}x ${item.nombre} — ${Cart.formatPrice(item.precio * item.qty)}`
+      `• ${item.qty}x ${item.nombre} - ${Cart.formatPrice(item.precio * item.qty)}`
     );
 
     const parts = [

@@ -38,6 +38,7 @@ const Cart = (() => {
   }
 
   function removeItem(productId) {
+    if (typeof Analytics !== 'undefined') Analytics.track('remove_from_cart', { product_id: productId });
     const items = getItems().filter(item => item.id !== productId);
     saveItems(items);
   }

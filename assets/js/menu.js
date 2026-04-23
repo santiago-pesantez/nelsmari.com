@@ -1,20 +1,29 @@
 /**
  * Nelsmari Sous Vide — Menu Module
- * Carga products.csv con PapaParse y renderiza el catálogo con qty selectors
+ * Carga products.csv con PapaParse y renderiza el catálogo con búsqueda,
+ * filtros de categoría y ordenamiento.
  */
 
 const Menu = (() => {
   const grid = document.getElementById('product-grid');
   const filtersContainer = document.getElementById('category-filters');
   const countEl = document.getElementById('menu-count');
+  const searchInput = document.getElementById('menu-search');
+  const searchClear = document.getElementById('menu-search-clear');
+  const sortSelect = document.getElementById('menu-sort');
+
   let allProducts = [];
   let activeCategory = 'todas';
+  let searchTerm = '';
+  let activeSort = '';
 
   // Load CSV (shared cache)
   CsvLoader.load().then(data => {
     allProducts = data.filter(p => p.disponible === 'true');
     renderProducts();
     setupFilters();
+    setupSearch();
+    setupSort();
   });
 
   function getCategoryLabel(cat) {
@@ -26,20 +35,70 @@ const Menu = (() => {
     return labels[cat] || cat;
   }
 
+  function getFilteredProducts() {
+    let filtered = allProducts;
+
+    // Categoría
+    if (activeCategory !== 'todas') {
+      filtered = filtered.filter(p => p.categoria === activeCategory);
+    }
+
+    // Búsqueda
+    if (searchTerm) {
+      const term = searchTerm.toLowerCase();
+      filtered = filtered.filter(p =>
+        p.nombre.toLowerCase().includes(term) ||
+        p.descripcion_corta.toLowerCase().includes(term)
+      );
+    }
+
+    // Ordenamiento
+    if (activeSort) {
+      filtered = filtered.slice(); // copia para no mutar
+      switch (activeSort) {
+        case 'price-asc':
+          filtered.sort((a, b) => parseFloat(a.precio) - parseFloat(b.precio));
+          break;
+        case 'price-desc':
+          filtered.sort((a, b) => parseFloat(b.precio) - parseFloat(a.precio));
+          break;
+        case 'cal-asc':
+          filtered.sort((a, b) => parseInt(a.calorias) - parseInt(b.calorias));
+          break;
+        case 'protein-desc':
+          filtered.sort((a, b) => parseInt(b.proteinas_g) - parseInt(a.proteinas_g));
+          break;
+      }
+    }
+
+    return filtered;
+  }
+
   function renderProducts() {
     if (!grid) return;
 
-    const filtered = activeCategory === 'todas'
-      ? allProducts
-      : allProducts.filter(p => p.categoria === activeCategory);
+    const filtered = getFilteredProducts();
 
     // Update count
     if (countEl) {
-      countEl.textContent = `${filtered.length} plato${filtered.length !== 1 ? 's' : ''} disponible${filtered.length !== 1 ? 's' : ''}`;
+      countEl.textContent = filtered.length === 0
+        ? 'No se encontraron platos'
+        : `${filtered.length} plato${filtered.length !== 1 ? 's' : ''} disponible${filtered.length !== 1 ? 's' : ''}`;
     }
 
-    // Group by category if showing all
-    if (activeCategory === 'todas') {
+    // Empty state
+    if (filtered.length === 0) {
+      grid.innerHTML = `
+        <div class="menu-empty">
+          <h3>No encontramos resultados</h3>
+          <p>Intenta con otra búsqueda o cambia los filtros.</p>
+        </div>
+      `;
+      return;
+    }
+
+    // Group by category if showing all and no sort active
+    if (activeCategory === 'todas' && !activeSort) {
       const groups = {};
       filtered.forEach(p => {
         if (!groups[p.categoria]) groups[p.categoria] = [];
@@ -97,6 +156,8 @@ const Menu = (() => {
     `;
   }
 
+  // --- Setup listeners ---
+
   function setupFilters() {
     if (!filtersContainer) return;
 
@@ -105,23 +166,57 @@ const Menu = (() => {
       if (!pill) return;
 
       activeCategory = pill.dataset.category;
+      if (typeof Analytics !== 'undefined') Analytics.track('filter_used', { category: activeCategory });
 
       filtersContainer.querySelectorAll('.filter-pill').forEach(p =>
         p.classList.toggle('is-active', p === pill)
       );
 
       renderProducts();
-
-      // Scroll to grid
       grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   }
+
+  function setupSearch() {
+    if (!searchInput) return;
+
+    let debounceTimer;
+    searchInput.addEventListener('input', () => {
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(() => {
+        searchTerm = searchInput.value.trim();
+        if (searchClear) searchClear.classList.toggle('is-visible', searchTerm.length > 0);
+        renderProducts();
+      }, 200);
+    });
+
+    if (searchClear) {
+      searchClear.addEventListener('click', () => {
+        searchInput.value = '';
+        searchTerm = '';
+        searchClear.classList.remove('is-visible');
+        searchInput.focus();
+        renderProducts();
+      });
+    }
+  }
+
+  function setupSort() {
+    if (!sortSelect) return;
+
+    sortSelect.addEventListener('change', () => {
+      activeSort = sortSelect.value;
+      renderProducts();
+    });
+  }
+
+  // --- Public actions ---
 
   function addProduct(productId) {
     const product = allProducts.find(p => p.id === productId);
     if (product) {
       Cart.addItem(product);
-      // Brief flash feedback on the card
+      if (typeof Analytics !== 'undefined') Analytics.track('add_to_cart', { product_id: product.id, category: product.categoria, price: parseFloat(product.precio) });
       const card = grid.querySelector(`.card--menu[data-id="${productId}"]`);
       if (card) {
         card.style.boxShadow = '0 0 0 2px var(--color-secondary)';
@@ -142,10 +237,6 @@ const Menu = (() => {
     updateCard(productId);
   }
 
-  /**
-   * Actualiza solo la card del producto afectado sin re-renderizar todo el grid.
-   * Esto evita el salto de scroll en mobile.
-   */
   function updateCard(productId) {
     const card = grid.querySelector(`.card--menu[data-id="${productId}"]`);
     const product = allProducts.find(p => p.id === productId);
@@ -157,7 +248,6 @@ const Menu = (() => {
     const temp = document.createElement('div');
     temp.innerHTML = renderCard(product);
     const newCard = temp.firstElementChild;
-
     card.replaceWith(newCard);
   }
 

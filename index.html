@@ -8,6 +8,7 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/ui/favicon-32.png">
   <link rel="apple-touch-icon" href="/assets/img/ui/apple-touch-icon.png">
+  <link rel="manifest" href="/manifest.json">
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Nelsmari Sous Vide — Comida gourmet lista en minutos">
@@ -20,6 +21,7 @@
   <meta name="twitter:title" content="Nelsmari Sous Vide — Comida gourmet lista en minutos">
   <meta name="twitter:description" content="Comida gourmet preparada al vacío, lista para calentar y servir. Pedidos por WhatsApp en el Valle de los Chillos, Ecuador.">
   <meta name="twitter:image" content="https://nelsmari.com/assets/img/ui/og-image.jpg">
+  <link rel="canonical" href="https://nelsmari.com/">
   <link rel="stylesheet" href="/assets/css/style.css">
   <!-- Schema.org -->
   <script type="application/ld+json">
@@ -73,6 +75,8 @@
 </head>
 <body>
 
+  <a href="#main-content" class="skip-link">Saltar al contenido</a>
+
   <!-- Header -->
   <header class="header">
     <div class="header__inner">
@@ -106,7 +110,7 @@
   </div>
 
   <!-- Hero -->
-  <section class="hero">
+  <section class="hero" id="main-content">
     <div class="hero__slideshow" id="hero-slideshow">
       <div class="hero__slide is-active" style="background-image: url('/assets/img/hero/hero-1.webp');"></div>
       <div class="hero__slide" style="background-image: url('/assets/img/hero/hero-2.webp');"></div>
@@ -355,6 +359,8 @@
   </a>
 
   <!-- Scripts -->
+  <script defer src="/assets/js/analytics.js"></script>
+  <script defer src="/assets/js/config.js"></script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
   <script defer src="/assets/js/cart.js"></script>
   <script defer src="/assets/js/csv-loader.js"></script>

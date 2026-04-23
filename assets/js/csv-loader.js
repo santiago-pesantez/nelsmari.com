@@ -14,7 +14,10 @@ const CsvLoader = (() => {
         header: true,
         skipEmptyLines: true,
         complete(results) { resolve(results.data); },
-        error(err) { reject(err); }
+        error(err) {
+          if (typeof Analytics !== 'undefined') Analytics.track('csv_load_fail', { error: String(err) });
+          reject(err);
+        }
       });
     });
     return _promise;

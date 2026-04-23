@@ -4,7 +4,7 @@
  */
 
 const WhatsApp = (() => {
-  const PHONE = '593995052703';
+  const PHONE = typeof Config !== 'undefined' ? Config.WHATSAPP_PHONE : '593995052703';
 
   function generateMessage(customerName, items, comboResult) {
     const lines = items.map(item =>
@@ -38,6 +38,15 @@ const WhatsApp = (() => {
   function sendOrder(customerName, comboResult) {
     const items = Cart.getItems();
     if (items.length === 0) return;
+
+    if (typeof Analytics !== 'undefined') {
+      Analytics.track('whatsapp_click', {
+        total: comboResult ? comboResult.total : Cart.getTotal(),
+        combos: comboResult ? comboResult.applied.map(function (c) { return c.id; }).join(',') : '',
+        item_count: items.reduce(function (s, i) { return s + i.qty; }, 0)
+      });
+      Analytics.flush();
+    }
 
     const message = generateMessage(customerName, items, comboResult);
     const encoded = encodeURIComponent(message);

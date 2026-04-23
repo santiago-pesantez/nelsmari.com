@@ -8,6 +8,7 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/ui/favicon-32.png">
   <link rel="apple-touch-icon" href="/assets/img/ui/apple-touch-icon.png">
+  <link rel="manifest" href="/manifest.json">
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Tu Pedido — Nelsmari Sous Vide">
@@ -20,9 +21,12 @@
   <meta name="twitter:title" content="Tu Pedido — Nelsmari Sous Vide">
   <meta name="twitter:description" content="Revisa tu pedido y envíalo por WhatsApp.">
   <meta name="twitter:image" content="https://nelsmari.com/assets/img/ui/og-image.jpg">
+  <link rel="canonical" href="https://nelsmari.com/sous-vide/checkout.html">
   <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
+
+  <a href="#main-content" class="skip-link">Saltar al contenido</a>
 
   <!-- Header -->
   <header class="header">
@@ -57,7 +61,7 @@
   </div>
 
   <!-- Checkout -->
-  <section class="section">
+  <section class="section" id="main-content">
     <div class="container container--narrow">
       <h1 class="text-center">Tu Pedido</h1>
       <div class="divider"></div>
@@ -80,6 +84,8 @@
   </a>
 
   <!-- Scripts -->
+  <script defer src="/assets/js/analytics.js"></script>
+  <script defer src="/assets/js/config.js"></script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
   <script defer src="/assets/js/cart.js"></script>
   <script defer src="/assets/js/csv-loader.js"></script>

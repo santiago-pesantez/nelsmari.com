@@ -1,0 +1,22 @@
+{
+  "name": "Nelsmari Sous Vide",
+  "short_name": "Nelsmari",
+  "description": "Comida gourmet preparada al vacío, lista para calentar y servir.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F5EFE0",
+  "theme_color": "#2D4A1E",
+  "lang": "es",
+  "icons": [
+    {
+      "src": "/assets/img/ui/favicon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/img/ui/favicon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

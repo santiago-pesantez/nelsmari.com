@@ -10,3 +10,7 @@ desktop.ini
 .vscode/
 *.swp
 *.swo
+
+# Claude Code (local, no commitear)
+CLAUDE.md
+.claude/

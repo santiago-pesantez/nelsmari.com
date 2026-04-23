@@ -8,6 +8,7 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/ui/favicon-32.png">
   <link rel="apple-touch-icon" href="/assets/img/ui/apple-touch-icon.png">
+  <link rel="manifest" href="/manifest.json">
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Menú — Nelsmari Sous Vide">
@@ -20,9 +21,12 @@
   <meta name="twitter:title" content="Menú — Nelsmari Sous Vide">
   <meta name="twitter:description" content="Explora nuestro menú de comida gourmet al vacío: proteínas, carbohidratos y vegetales.">
   <meta name="twitter:image" content="https://nelsmari.com/assets/img/ui/og-image.jpg">
+  <link rel="canonical" href="https://nelsmari.com/sous-vide/">
   <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
+
+  <a href="#main-content" class="skip-link">Saltar al contenido</a>
 
   <!-- Header -->
   <header class="header">
@@ -57,7 +61,7 @@
   </div>
 
   <!-- Page Header -->
-  <section class="section section--warm menu-header">
+  <section class="section section--warm menu-header" id="main-content">
     <div class="container text-center">
       <h1>Nuestro Menú</h1>
       <p class="menu-header__subtitle">Comida gourmet lista en minutos, sin conservantes, sin complicaciones.</p>
@@ -72,12 +76,34 @@
 
         <!-- Main content -->
         <div class="menu-layout__main">
+          <!-- Buscador -->
+          <div class="menu-search">
+            <svg class="menu-search__icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" class="menu-search__input" id="menu-search" placeholder="Buscar plato..." autocomplete="off">
+            <button class="menu-search__clear" id="menu-search-clear" aria-label="Limpiar búsqueda">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </div>
+
           <!-- Filtros -->
           <div class="filter-pills" id="category-filters">
             <button class="filter-pill is-active" data-category="todas">Todas</button>
             <button class="filter-pill" data-category="proteinas">Proteínas — $3,25</button>
             <button class="filter-pill" data-category="carbohidratos">Carbohidratos — $1,25</button>
             <button class="filter-pill" data-category="vegetales">Vegetales — $1,00</button>
+          </div>
+
+          <!-- Ordenar -->
+          <div class="menu-toolbar">
+            <div class="menu-sort">
+              <select id="menu-sort" aria-label="Ordenar por">
+                <option value="">Ordenar por...</option>
+                <option value="price-asc">Precio: menor a mayor</option>
+                <option value="price-desc">Precio: mayor a menor</option>
+                <option value="cal-asc">Calorías: menor a mayor</option>
+                <option value="protein-desc">Más proteína</option>
+              </select>
+            </div>
           </div>
 
           <!-- Promos banner -->
@@ -178,6 +204,8 @@
   </a>
 
   <!-- Scripts -->
+  <script defer src="/assets/js/analytics.js"></script>
+  <script defer src="/assets/js/config.js"></script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
   <script defer src="/assets/js/cart.js"></script>
   <script defer src="/assets/js/csv-loader.js"></script>

@@ -1136,7 +1136,8 @@ body:has(.cart-float.has-items) .back-to-top {
   background-color: var(--color-bg-white);
 }
 
-.menu-group:first-child .menu-category-header {
+.menu-group:first-child .menu-category-header,
+.menu-group--promos .menu-category-header {
   padding-top: 0;
 }
 
@@ -1162,7 +1163,8 @@ body:has(.cart-float.has-items) .back-to-top {
     margin-bottom: var(--space-md);
   }
 
-  .menu-group:first-child .menu-category-header {
+  .menu-group:first-child .menu-category-header,
+  .menu-group--promos .menu-category-header {
     padding-top: var(--space-sm);
   }
 }

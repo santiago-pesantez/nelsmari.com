@@ -257,5 +257,17 @@ const Menu = (() => {
     }
   }
 
+  // --- Back to top button ---
+  const backToTop = document.getElementById('back-to-top');
+  if (backToTop) {
+    const anchor = document.getElementById('category-filters') || grid;
+    window.addEventListener('scroll', () => {
+      backToTop.classList.toggle('is-visible', window.scrollY > 600);
+    }, { passive: true });
+    backToTop.addEventListener('click', () => {
+      anchor.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+
   return { addProduct, changeQty, refreshCards };
 })();

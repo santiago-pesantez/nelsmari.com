@@ -553,6 +553,45 @@ body:has(.cart-float.has-items) .whatsapp-float {
   bottom: calc(var(--space-lg) + 56px);
 }
 
+/* --- Back to Top button --- */
+.back-to-top {
+  position: fixed;
+  bottom: calc(var(--space-lg) + 56px + var(--space-sm));
+  right: var(--space-lg);
+  width: 44px;
+  height: 44px;
+  background-color: var(--color-bg-white);
+  color: var(--color-primary);
+  border: 1px solid rgba(var(--color-primary-rgb), 0.15);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  z-index: 90;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(8px);
+  transition: opacity var(--transition-base), transform var(--transition-base), background-color var(--transition-base), color var(--transition-base);
+}
+
+.back-to-top.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.back-to-top:hover {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  transform: translateY(-2px);
+}
+
+body:has(.cart-float.has-items) .back-to-top {
+  bottom: calc(var(--space-lg) + 56px + var(--space-sm) + 56px);
+}
+
 .cart-float__info {
   display: flex;
   align-items: center;
@@ -1119,9 +1158,12 @@ body:has(.cart-float.has-items) .whatsapp-float {
   width: 100%;
   background-color: var(--color-bg-white);
   font-family: inherit;
+  font-size: inherit;
   color: inherit;
   cursor: pointer;
   text-align: left;
+  border: 0;
+  border-bottom: 2px solid var(--color-accent);
 }
 
 .menu-category-chevron {

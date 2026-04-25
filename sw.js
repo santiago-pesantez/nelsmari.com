@@ -3,7 +3,7 @@
  * Cache-first para assets estáticos, network-first para CSV y HTML.
  */
 
-const CACHE_NAME = 'nelsmari-v6';
+const CACHE_NAME = 'nelsmari-v7';
 const STATIC_ASSETS = [
   '/',
   '/assets/css/style.css',
